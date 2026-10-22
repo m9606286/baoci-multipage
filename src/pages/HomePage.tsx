@@ -1,12 +1,14 @@
 import React from 'react';
 import Hero from '../components/Hero';
-import CoreValues from '../components/CoreValues';
+import About from '../components/About';
+import Announcement from '../components/Announcement';
 
 export default function HomePage() {
   return (
     <div>
       <Hero />
-      <CoreValues />
+      <Announcement />
+      <About />
     </div>
   );
 }
