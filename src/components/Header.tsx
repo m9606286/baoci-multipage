@@ -1,116 +1,109 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { Phone, Menu, X } from 'lucide-react';
-import { useScrolled } from '@/hooks/useReveal';
-import BrandLogo from '@/components/BrandLogo';
-
-const navLinks = [
-  { label: '關於我們', en: 'ABOUT', href: '#top', isTop: true },
-  { label: '核心價值', en: 'VALUES', href: '#values' },
-  { label: '生前契約', en: 'CONTRACT', href: '#preneed' },
-  { label: '服務項目', en: 'SERVICES', href: '#services' },
-  { label: '契約商品', en: 'PRODUCTS', href: '#products' },
-  { label: '信託公開', en: 'TRUST', href: '#trust' },
-  { label: '聯絡我們', en: 'CONTACT', href: '#contact' },
-];
+import BrandLogo from './BrandLogo';
 
 export default function Header() {
-  const scrolled = useScrolled(60);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, link: typeof navLinks[0]) => {
-    setMenuOpen(false);
-    if (link.isTop) {
-      e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+  const navItems = [
+    { name: '關於我們', path: '/' },
+    { name: '核心價值', path: '/values' },
+    { name: '生前契約', path: '/preneed' },
+    { name: '服務項目', path: '/services' },
+    { name: '契約商品', path: '/products' },
+    { name: '信託公開', path: '/trust' },
+    { name: '聯絡我們', path: '/contact' },
+  ];
+
+  const isActive = (path: string) => {
+    return location.pathname === path;
   };
 
   return (
-    <header
-      className={`sticky top-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? 'bg-ivory-50/95 backdrop-blur-md shadow-[0_2px_20px_rgba(12,15,20,0.08)]'
-          : 'bg-ivory-50/80 backdrop-blur-sm'
-      }`}
-    >
-      <div className="mx-auto max-w-8xl px-6">
-        <div className="flex items-center justify-between h-20 lg:h-24">
-          {/* Logo */}
-          <a
-            href="#top"
-            onClick={(e) => {
-              e.preventDefault();
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
-            className="flex items-center gap-3 group"
-            aria-label="寶慈生命事業首頁"
-          >
+    <header className="fixed top-0 left-0 right-0 z-40 bg-stone-50/90 backdrop-blur-md border-b border-stone-200/80">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-20">
+          
+          {/* LOGO */}
+          <Link to="/" className="flex items-center space-x-3 group">
             <BrandLogo />
-          </a>
+            <div className="flex flex-col">
+              <span className="font-serif-tc text-2xl font-bold tracking-wider text-ink-900 group-hover:text-gold-600 transition-colors">
+                寶慈生命事業
+              </span>
+            </div>
+          </Link>
 
-          {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link)}
-                className="group relative px-4 py-2 flex flex-col items-center text-ink-600 hover:text-ink-900 transition-colors"
+          {/* 桌機版導覽選單 */}
+          <nav className="hidden md:flex items-center space-x-8">
+            {navItems.map((item) => (
+              <Link
+                key={item.path}
+                to={item.path}
+                className={`text-sm font-medium transition-colors hover:text-gold-600 relative py-2 ${
+                  isActive(item.path)
+                    ? 'text-gold-600 font-semibold'
+                    : 'text-ink-600'
+                }`}
               >
-                <span className="text-[10px] tracking-[0.25em] text-gold-500/70 group-hover:text-gold-500 transition-colors">
-                  {link.en}
-                </span>
-                <span className="text-sm font-medium tracking-wide mt-0.5">
-                  {link.label}
-                </span>
-                <span className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-0 h-px bg-gold-400 group-hover:w-3/4 transition-all duration-300" />
-              </a>
+                {item.name}
+                {isActive(item.path) && (
+                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-gold-600 rounded-full" />
+                )}
+              </Link>
             ))}
           </nav>
 
-          {/* Phone CTA (desktop) */}
-          <a
-            href="tel:0800-600-603"
-            className="hidden lg:flex items-center gap-2 px-5 py-2.5 rounded-full bg-ink-900 text-ivory-50 hover:bg-ink-800 transition-all hover:shadow-lg group"
-          >
-            <Phone className="w-4 h-4 text-gold-400 group-hover:scale-110 transition-transform" />
-            <span className="text-sm font-medium">0800-600-603</span>
-          </a>
+          {/* 免費諮詢專線 */}
+          <div className="hidden lg:flex items-center space-x-4">
+            <a
+              href="tel:0800600603"
+              className="inline-flex items-center space-x-2 bg-ink-900 hover:bg-ink-800 text-stone-100 px-4 py-2.5 rounded-full text-sm font-medium transition-all shadow-sm hover:shadow-md"
+            >
+              <Phone className="w-4 h-4 text-gold-400" />
+              <span>0800-600-603</span>
+            </a>
+          </div>
 
-          {/* Mobile menu button */}
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="lg:hidden p-2 text-ink-700"
-            aria-label="開啟選單"
-          >
-            {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          {/* 行動裝置漢堡選單按鈕 */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-2 rounded-md text-ink-700 hover:text-gold-600 hover:bg-stone-100 transition-colors"
+              aria-label="Toggle menu"
+            >
+              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Mobile menu */}
-      {menuOpen && (
-        <div className="lg:hidden bg-ivory-50 border-t border-ivory-300 animate-fade-in">
-          <nav className="flex flex-col px-6 py-4">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link)}
-                className="py-3 border-b border-ivory-200 flex items-center justify-between group"
-              >
-                <span className="text-ink-700 font-medium">{link.label}</span>
-                <span className="text-[10px] tracking-widest text-gold-500">{link.en}</span>
-              </a>
-            ))}
-            <a
-              href="tel:0800-600-603"
-              className="mt-4 flex items-center justify-center gap-2 py-3 rounded-full bg-ink-900 text-ivory-50"
+      {/* 行動裝置選單展開區塊 */}
+      {isOpen && (
+        <div className="md:hidden bg-stone-50 border-b border-stone-200 px-4 pt-2 pb-6 space-y-3">
+          {navItems.map((item) => (
+            <Link
+              key={item.path}
+              to={item.path}
+              onClick={() => setIsOpen(false)}
+              className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
+                isActive(item.path)
+                  ? 'bg-gold-50 text-gold-700 font-semibold'
+                  : 'text-ink-700 hover:bg-stone-100'
+              }`}
             >
-              <Phone className="w-4 h-4 text-gold-400" />
-              <span className="font-medium">0800-600-603</span>
-            </a>
-          </nav>
+              {item.name}
+            </Link>
+          ))}
+          <a
+            href="tel:0800600603"
+            className="flex items-center justify-center space-x-2 bg-ink-900 text-stone-100 px-4 py-3 rounded-xl text-sm font-medium mt-4"
+          >
+            <Phone className="w-4 h-4 text-gold-400" />
+            <span>0800-600-603 免費諮詢</span>
+          </a>
         </div>
       )}
     </header>
