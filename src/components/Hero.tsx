@@ -1,24 +1,25 @@
-import { Phone, ChevronDown, Heart } from 'lucide-react';
+import { Heart } from 'lucide-react';
 
-const heroImage = '/hero.png';
+const heroImage = '/images/hero.png';
 
 export default function Hero() {
   return (
-    <section id="top" className="relative h-[90vh] min-h-[600px] max-h-[900px] overflow-hidden">
-      {/* Background image with brightness boost */}
+    <section id="top" className="relative h-[90vh] min-h-[600px] max-h-[900px] overflow-hidden bg-ink-950">
+      {/* Background image with subtle warmth & optimized rendering */}
       <div className="absolute inset-0">
         <img
           src={heroImage}
-          alt="家人彼此陪伴"
-          className="w-full h-full object-cover animate-slow-zoom brightness-105 contrast-[1.02]"
+          alt="溫暖金色光芒與永續守護"
+          className="w-full h-full object-cover brightness-105 contrast-[1.02] transform-gpu"
+          style={{ imageRendering: '-webkit-optimize-contrast' }}
         />
-        {/* 調薄漸層遮罩，保留左側文字可讀性，同時讓整張圖透出溫暖明亮的光彩 */}
-        <div className="absolute inset-0 bg-gradient-to-r from-ink-950/75 via-ink-950/30 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-b from-ink-950/30 via-transparent to-ink-950/40" />
+        {/* 通透輕柔的遮罩 */}
+        <div className="absolute inset-0 bg-gradient-to-r from-ink-950/80 via-ink-950/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink-950/30 via-transparent to-ink-950/50" />
       </div>
 
       {/* Content */}
-      <div className="relative h-full mx-auto max-w-8xl px-6 flex flex-col justify-center">
+      <div className="relative h-full mx-auto max-w-8xl px-6 flex flex-col justify-center z-10">
         <div className="max-w-3xl">
           <div className="flex items-center gap-3 mb-6 animate-fade-in" style={{ animationDelay: '0.2s', opacity: 0 }}>
             <Heart className="w-5 h-5 text-gold-300 drop-shadow" />
@@ -43,37 +44,17 @@ export default function Hero() {
             <br />
             都充滿尊嚴與意義。
           </p>
-
-          <div
-            className="mt-10 flex flex-col sm:flex-row gap-4 animate-fade-up"
-            style={{ animationDelay: '1s', opacity: 0 }}
-          >
-            <a
-              href="#preneed"
-              className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-gold-400 text-ink-900 font-bold hover:bg-gold-300 transition-all hover:shadow-2xl hover:shadow-gold-500/30 group"
-            >
-              <span>瞭解生前契約</span>
-              <ChevronDown className="w-4 h-4 ml-2 group-hover:translate-y-0.5 transition-transform" />
-            </a>
-            <a
-              href="#contact"
-              className="inline-flex items-center justify-center px-8 py-4 rounded-full border border-white/50 bg-black/20 text-white font-medium hover:bg-white/20 transition-all backdrop-blur-md group"
-            >
-              <Phone className="w-4 h-4 mr-2 text-gold-300 group-hover:scale-110 transition-transform" />
-              <span>聯絡我們</span>
-            </a>
-          </div>
         </div>
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-fade-in" style={{ animationDelay: '1.5s', opacity: 0 }}>
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-fade-in z-10" style={{ animationDelay: '1.5s', opacity: 0 }}>
         <span className="text-white/80 text-xs tracking-widest drop-shadow">SCROLL</span>
         <div className="w-px h-12 bg-gradient-to-b from-white/80 to-transparent" />
       </div>
 
       {/* Bottom fade into next section */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-ivory-100 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-ivory-100 to-transparent z-10" />
     </section>
   );
 }
