@@ -3,17 +3,12 @@ import React from 'react';
 export default function BrandLogo() {
   return (
     <div className="flex items-center space-x-3">
-      {/* 載入原本的 logo.png 圖檔 */}
+      {/* 如果 logo.png 圖片本身已經包含「寶慈生命事業」文字，這裡只需保留 img 即可 */}
       <img
         src="/images/logo.png"
         alt="寶慈生命事業 Logo"
         className="h-10 w-auto object-contain"
       />
-      
-      {/* 寶慈生命事業 文字標題 */}
-      <span className="font-serif-tc text-2xl font-bold tracking-wider text-ink-900 group-hover:text-gold-600 transition-colors">
-        寶慈生命事業
-      </span>
     </div>
   );
 }
