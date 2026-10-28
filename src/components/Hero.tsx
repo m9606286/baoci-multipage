@@ -1,7 +1,7 @@
 import { Phone, ChevronDown, Heart } from 'lucide-react';
 
-const heroImage =
-  'https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=1920&q=80';
+// 改為引用 public 目錄下的絕對路徑
+const heroImage = '/hero-family.jpg';
 
 export default function Hero() {
   return (
