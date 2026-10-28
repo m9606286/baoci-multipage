@@ -25,7 +25,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           
-          {/* LOGO 與名稱（確保只渲染一次） */}
+          {/* LOGO 與名稱 */}
           <Link to="/" className="flex items-center space-x-3 group">
             <BrandLogo />
             <span className="font-serif-tc text-2xl font-bold tracking-wider text-ink-900 group-hover:text-gold-600 transition-colors">
@@ -53,14 +53,21 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* 免費諮詢專線 */}
+          {/* 右上角 24 小時免費諮詢專線 */}
           <div className="hidden lg:flex items-center space-x-4">
             <a
               href="tel:0800600603"
-              className="inline-flex items-center space-x-2 bg-ink-900 hover:bg-ink-800 text-stone-100 px-4 py-2.5 rounded-full text-sm font-medium transition-all shadow-sm hover:shadow-md"
+              className="inline-flex items-center space-x-2.5 bg-ink-900 hover:bg-ink-800 text-stone-100 px-5 py-2 rounded-full transition-all shadow-sm hover:shadow-md group"
             >
-              <Phone className="w-4 h-4 text-gold-400" />
-              <span>0800-600-603</span>
+              <Phone className="w-4 h-4 text-gold-400 group-hover:scale-110 transition-transform flex-shrink-0" />
+              <div className="flex flex-col text-left">
+                <span className="text-[10px] text-gold-300 font-normal leading-tight tracking-wider">
+                  24小時服務專線
+                </span>
+                <span className="text-sm font-semibold tracking-wide text-stone-100 leading-tight">
+                  0800-600-603
+                </span>
+              </div>
             </a>
           </div>
 
@@ -96,10 +103,10 @@ export default function Header() {
           ))}
           <a
             href="tel:0800600603"
-            className="flex items-center justify-center space-x-2 bg-ink-900 text-stone-100 px-4 py-3 rounded-xl text-sm font-medium mt-4"
+            className="flex items-center justify-center space-x-2.5 bg-ink-900 text-stone-100 px-4 py-3 rounded-xl text-sm font-medium mt-4"
           >
             <Phone className="w-4 h-4 text-gold-400" />
-            <span>0800-600-603 免費諮詢</span>
+            <span>24小時服務專線：0800-600-603</span>
           </a>
         </div>
       )}
