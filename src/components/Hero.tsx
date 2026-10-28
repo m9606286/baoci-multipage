@@ -1,7 +1,7 @@
 import { Phone, ChevronDown, Heart } from 'lucide-react';
 
 const heroImage =
-  'https://images.pexels.com/photos/4148981/pexels-photo-4148981.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1280';
+  'https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=1920&q=80';
 
 export default function Hero() {
   return (
