@@ -8,7 +8,7 @@ export default function BrandLogo({ variant = 'header' }: BrandLogoProps) {
   const isFooter = variant === 'footer';
 
   return (
-    <a href="/" className="flex items-center gap-2.5 shrink-0 group">
+    <div className="flex items-center gap-2.5 shrink-0 group">
       {/* 限制 Logo 高度為 h-8 (約 32px)，保持精緻不誇張 */}
       <img
         src={logoSource}
@@ -23,6 +23,6 @@ export default function BrandLogo({ variant = 'header' }: BrandLogoProps) {
       >
         寶慈生命事業
       </span>
-    </a>
+    </div>
   );
 }
