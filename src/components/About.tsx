@@ -63,8 +63,9 @@ const milestones = [
   },
 ];
 
+// 替換為淡色系、有質感且溫暖明亮的陪伴／光影意象圖片
 const aboutImage =
-  'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=1200&q=80';
+  'https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=1200&q=80';
 
 export default function About() {
   const ref = useReveal<HTMLDivElement>();
@@ -78,16 +79,16 @@ export default function About() {
           
           {/* 左側：圖片區塊 */}
           <div className="lg:col-span-5 relative reveal flex flex-col h-full min-h-[550px] lg:min-h-[700px]">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl h-full flex-1 group cursor-pointer border border-ivory-300/85">
+            <div className="relative rounded-2xl overflow-hidden shadow-xl h-full flex-1 group cursor-pointer border border-ivory-300/85 bg-white">
               <img
                 src={aboutImage}
                 alt="溫暖陪伴與專業禮儀服務"
                 className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink-950/40 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-stone-900/20 via-transparent to-transparent pointer-events-none" />
             </div>
             
-            {/* 左下角 75% 信託保障浮水印標籤 */}
+            {/* 左下角 75% 信託保障標籤 */}
             <div className="absolute bottom-6 right-6 lg:-right-4 bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl p-5 border border-white/60 z-25">
               <p className="font-serif-tc text-3xl font-bold gold-text-gradient">75%</p>
               <p className="text-xs font-semibold text-ink-700 mt-1">信託保障</p>
@@ -125,12 +126,11 @@ export default function About() {
 
         </div>
 
-        {/* 發展歷程 (Milestones) 區塊：滑鼠移入整體大方框 (group/milestone) 時，日曆圖示切換為與「我們的願景」相同的土金底白字 */}
+        {/* 發展歷程 (Milestones) 區塊 */}
         <div className="group/milestone mt-20 lg:mt-28 max-w-4xl mx-auto bg-white/85 backdrop-blur-md rounded-3xl p-8 sm:p-12 lg:p-16 border border-ivory-300 shadow-xl relative overflow-hidden transition-shadow duration-300 hover:shadow-2xl">
           
           {/* 頂部標題與日曆圖示 */}
           <div className="text-center mb-14">
-            {/* 使用與上方卡片相同的 group-hover/milestone:bg-gold-500 */}
             <div className="inline-flex items-center justify-center p-3.5 rounded-2xl bg-ivory-100 text-gold-700 group-hover/milestone:bg-gold-500 group-hover/milestone:text-white transition-colors duration-300 shadow-sm mb-3">
               <Calendar className="w-6 h-6 transition-transform duration-300 group-hover/milestone:scale-110" />
             </div>
@@ -147,7 +147,6 @@ export default function About() {
                 key={index} 
                 className="relative group/timeline cursor-pointer p-2 rounded-xl transition-all duration-300 hover:translate-x-1.5"
               >
-                
                 {/* 時間軸節點圓點 */}
                 <div className="absolute -left-[31px] sm:-left-[47px] top-3.5 w-4 h-4 rounded-full bg-white border-4 border-gold-500 shadow-md group-hover/timeline:scale-150 group-hover/timeline:border-gold-600 group-hover/timeline:shadow-gold-500/50 transition-all duration-300" />
 
