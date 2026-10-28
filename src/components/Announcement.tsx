@@ -9,38 +9,42 @@ export default function Announcement() {
 
   return (
     <>
-      <section className="py-12 lg:py-16 bg-ivory-100">
+      <section className="py-10 lg:py-14 bg-ivory-100/60">
         <div ref={ref} className="mx-auto max-w-8xl px-6">
+          {/* 改為淡色系漸層背景、高質感金色邊框與陰影 */}
           <div
             onClick={() => setIsOpen(true)}
-            className="reveal relative bg-gradient-to-r from-ink-900 to-ink-800 rounded-2xl p-6 lg:p-8 overflow-hidden shadow-xl cursor-pointer hover:shadow-2xl transition-all duration-300 border border-gold-400/20 group"
+            className="reveal relative bg-gradient-to-r from-stone-50 via-gold-50/40 to-ivory-100 rounded-2xl p-6 lg:p-8 overflow-hidden shadow-md hover:shadow-xl cursor-pointer transition-all duration-300 border border-gold-300/60 group"
           >
-            {/* Decorative element */}
-            <div className="absolute top-0 right-0 w-64 h-full opacity-10 pointer-events-none">
+            {/* 裝飾背景 */}
+            <div className="absolute top-0 right-0 w-64 h-full opacity-25 pointer-events-none">
               <div
                 className="w-full h-full"
                 style={{
                   backgroundImage:
-                    'radial-gradient(circle at 70% 50%, rgba(212,167,73,0.4) 0%, transparent 60%)',
+                    'radial-gradient(circle at 70% 50%, rgba(212,167,73,0.3) 0%, transparent 60%)',
                 }}
               />
             </div>
 
             <div className="relative flex items-center justify-between gap-4 lg:gap-6">
               <div className="flex items-center gap-4 lg:gap-6">
-                <div className="flex-shrink-0 w-14 h-14 lg:w-16 lg:h-16 rounded-full bg-gold-400/15 border border-gold-400/30 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-                  <Megaphone className="w-7 h-7 lg:w-8 lg:h-8 text-gold-400" />
+                {/* 喇叭圖示背景改為淡金光澤 */}
+                <div className="flex-shrink-0 w-14 h-14 lg:w-16 lg:h-16 rounded-full bg-gold-100 border border-gold-300/80 flex items-center justify-center group-hover:scale-105 transition-transform duration-300 shadow-sm">
+                  <Megaphone className="w-7 h-7 lg:w-8 lg:h-8 text-gold-600" />
                 </div>
                 <div>
-                  <p className="text-gold-400 text-xs tracking-[0.25em] uppercase mb-2">重要公告</p>
-                  <p className="font-serif-tc text-base lg:text-xl text-ivory-50 leading-relaxed font-medium">
+                  <div className="inline-block bg-gold-500 text-white text-[11px] font-bold tracking-widest uppercase px-2.5 py-0.5 rounded-full mb-2">
+                    重要公告
+                  </div>
+                  <p className="font-serif-tc text-base lg:text-xl text-ink-900 leading-relaxed font-semibold">
                     {announcement}
                   </p>
                 </div>
               </div>
 
               {/* 右側詳細內容提示按鈕 */}
-              <div className="hidden sm:flex items-center gap-1 text-sm font-medium text-gold-400 group-hover:translate-x-1.5 transition-transform duration-300 shrink-0">
+              <div className="hidden sm:flex items-center gap-1 text-sm font-bold text-gold-700 group-hover:translate-x-1.5 transition-transform duration-300 shrink-0">
                 <span>詳細內容</span>
                 <ChevronRight className="w-4 h-4" />
               </div>
@@ -51,8 +55,8 @@ export default function Announcement() {
 
       {/* 詳細公告彈窗 Modal */}
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/70 backdrop-blur-sm animate-fade-in">
-          <div className="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl overflow-hidden max-h-[85vh] sm:max-h-[90vh] flex flex-col my-auto border border-gold-400/20">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-stone-900/60 backdrop-blur-sm animate-fade-in">
+          <div className="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl overflow-hidden max-h-[85vh] sm:max-h-[90vh] flex flex-col my-auto border border-gold-300/50">
             
             {/* 彈窗頂部 */}
             <div className="sticky top-0 z-10 flex justify-between items-center px-5 py-3.5 sm:px-6 sm:py-4 border-b border-ivory-200 bg-white/95 backdrop-blur-md">
@@ -66,7 +70,7 @@ export default function Announcement() {
               </button>
             </div>
 
-            {/* 彈窗內文（優化手機版滾動體驗） */}
+            {/* 彈窗內文 */}
             <div className="p-4 sm:p-6 md:p-8 overflow-y-auto space-y-5 sm:space-y-6 text-slate-700 scrollbar-thin scrollbar-thumb-gold-400/30">
               <div className="text-center pb-3 border-b border-gold-300/60">
                 <h2 className="font-serif-tc text-xl sm:text-2xl md:text-3xl font-bold text-gold-600 tracking-wide">
@@ -141,23 +145,4 @@ export default function Announcement() {
                 <p className="font-serif-tc text-base sm:text-lg font-bold text-slate-900">寶慈生命事業股份有限公司</p>
                 <p className="text-xs text-slate-500">（原永慈事業股份有限公司）</p>
                 <p className="text-xs font-serif-tc italic text-slate-400 pt-1">敬啟</p>
-                <div className="pt-3 border-t border-slate-100">
-                  <p className="text-[10px] sm:text-[11px] text-slate-400">台南市政府民政局-核准變更名稱及負責人(受文者寶慈)</p>
-                </div>
-              </div>
-
-              {/* 手機版底部關閉按鈕 */}
-              <button
-                onClick={() => setIsOpen(false)}
-                className="w-full py-2.5 rounded-xl bg-gold-400 hover:bg-gold-500 text-ink-950 font-bold text-sm transition-colors shadow-md mt-2"
-              >
-                我已瞭解
-              </button>
-
-            </div>
-          </div>
-        </div>
-      )}
-    </>
-  );
-}
+                <div className="pt-3
