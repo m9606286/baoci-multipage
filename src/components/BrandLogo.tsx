@@ -10,7 +10,7 @@ export default function BrandLogo({ variant = 'header' }: BrandLogoProps) {
   const isFooter = variant === 'footer';
 
   return (
-    <div className="flex items-center gap-2.5 shrink-0 group">
+    <div className="flex items-center gap-2.5 shrink-0">
       <img
         src={logoSource}
         alt="寶慈生命事業"
