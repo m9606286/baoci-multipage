@@ -1,6 +1,6 @@
 import { Phone, ChevronDown, Heart } from 'lucide-react';
 
-const heroImage = '/hero-family.jpg';
+const heroImage = '/hero.png';
 
 export default function Hero() {
   return (
