@@ -9,7 +9,6 @@ export default function Header() {
 
   const navItems = [
     { name: '關於我們', path: '/' },
-    { name: '核心價值', path: '/values' },
     { name: '生前契約', path: '/preneed' },
     { name: '服務項目', path: '/services' },
     { name: '契約商品', path: '/products' },
