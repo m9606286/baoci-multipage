@@ -65,7 +65,7 @@ const milestones = [
 
 // 更換為質感明亮、溫馨淡色的意象圖
 const aboutImage =
-  'https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=1920&q=80';
+  'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=1920&q=80';
 
 export default function About() {
   const ref = useReveal<HTMLDivElement>();
