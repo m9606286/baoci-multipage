@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Phone, Menu, X } from 'lucide-react';
-import { useScrolled } from '@/hooks/useReveal';
-import BrandLogo from '@/components/BrandLogo';
+import { useScrolled } from '../hooks/useReveal';
+import BrandLogo from './BrandLogo';
 
 const navLinks = [
   { label: '關於我們', en: 'ABOUT', href: '#top', isTop: true },
