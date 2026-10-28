@@ -1,7 +1,8 @@
 import React from 'react';
 import Hero from '../components/Hero';
-import About from '../components/About';
 import Announcement from '../components/Announcement';
+import About from '../components/About';
+import CoreValues from '../components/CoreValues';
 
 export default function HomePage() {
   return (
@@ -9,6 +10,7 @@ export default function HomePage() {
       <Hero />
       <Announcement />
       <About />
+      <CoreValues />
     </div>
   );
 }
