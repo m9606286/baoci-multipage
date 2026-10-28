@@ -25,12 +25,9 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           
-          {/* LOGO 與名稱 */}
+          {/* LOGO 區塊（已去除重複字樣，交由 BrandLogo 統一呈現） */}
           <Link to="/" className="flex items-center space-x-3 group">
             <BrandLogo />
-            <span className="font-serif-tc text-2xl font-bold tracking-wider text-ink-900 group-hover:text-gold-600 transition-colors">
-              寶慈生命事業
-            </span>
           </Link>
 
           {/* 桌機版導覽選單 */}
