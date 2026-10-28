@@ -1,28 +1,17 @@
-type BrandLogoProps = {
-  variant?: 'header' | 'footer';
-};
+import React from 'react';
 
-const logoSource = '/logo.png';
-
-export default function BrandLogo({ variant = 'header' }: BrandLogoProps) {
-  const isFooter = variant === 'footer';
-
+export default function BrandLogo() {
   return (
-    <a href="/" className="flex items-center gap-2.5 shrink-0 group">
-      {/* 限制 Logo 高度為 h-8 (約 32px)，保持精緻不誇張 */}
-      <img
-        src={logoSource}
-        alt="寶慈生命事業"
-        className="h-8 md:h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
-      />
-      {/* 套用典雅明體 (font-serif-tc)、適中字型大小與精緻字距 */}
-      <span
-        className={`font-serif-tc text-lg md:text-xl font-bold tracking-wider ${
-          isFooter ? 'text-white/90' : 'text-slate-800'
-        }`}
-      >
+    <div className="flex items-center space-x-3">
+      {/* 品牌 圖示 / Icon */}
+      <div className="w-10 h-10 bg-gold-500 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-md">
+        寶
+      </div>
+
+      {/* 品牌名稱：只保留這一組文字 */}
+      <span className="font-serif-tc text-2xl font-bold tracking-wider text-ink-900 group-hover:text-gold-600 transition-colors">
         寶慈生命事業
       </span>
-    </a>
+    </div>
   );
 }
