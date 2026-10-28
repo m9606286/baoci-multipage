@@ -63,9 +63,9 @@ const milestones = [
   },
 ];
 
-// 替換為淡色系、有質感且溫暖明亮的陪伴／光影意象圖片
+// 更換為質感明亮、溫馨淡色的意象圖
 const aboutImage =
-  'https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=1200&q=80';
+  'https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&fit=crop&w=1200&q=80';
 
 export default function About() {
   const ref = useReveal<HTMLDivElement>();
@@ -77,7 +77,7 @@ export default function About() {
       <div ref={ref} className="mx-auto max-w-8xl px-6 relative">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-stretch mb-24">
           
-          {/* 左側：圖片區塊 */}
+          {/* 左側：主圖片區塊 */}
           <div className="lg:col-span-5 relative reveal flex flex-col h-full min-h-[550px] lg:min-h-[700px]">
             <div className="relative rounded-2xl overflow-hidden shadow-xl h-full flex-1 group cursor-pointer border border-ivory-300/85 bg-white">
               <img
@@ -96,7 +96,7 @@ export default function About() {
             </div>
           </div>
 
-          {/* 右側：三個卡片區塊 (故事、使命、願景) */}
+          {/* 右側：三個卡片區塊 (我們的故事、我們的使命 Heart 圖示、我們的願景) */}
           <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
             {aboutSections.map((section, idx) => {
               const Icon = section.icon;
