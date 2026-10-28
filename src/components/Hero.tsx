@@ -1,19 +1,21 @@
 import { Heart } from 'lucide-react';
-
-const heroImage = '/images/hero.png';
-
+import heroImage from '../assets/images/hero.png';
 export default function Hero() {
   return (
     <section id="top" className="relative h-[90vh] min-h-[600px] max-h-[900px] overflow-hidden bg-ink-950">
-      {/* Background image with subtle warmth & optimized rendering */}
+      {/* Background image */}
       <div className="absolute inset-0">
         <img
           src={heroImage}
-          alt="溫暖金色光芒與永續守護"
+          alt="溫暖金色光芒"
           className="w-full h-full object-cover brightness-105 contrast-[1.02] transform-gpu"
           style={{ imageRendering: '-webkit-optimize-contrast' }}
+          onError={(e) => {
+            // 防護機制：若圖片路徑失效，可自動印出 Log 除錯
+            console.error('Hero image failed to load:', heroImage);
+          }}
         />
-        {/* 通透輕柔的遮罩 */}
+        {/* 輕柔遮罩 */}
         <div className="absolute inset-0 bg-gradient-to-r from-ink-950/80 via-ink-950/40 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-b from-ink-950/30 via-transparent to-ink-950/50" />
       </div>
