@@ -145,4 +145,23 @@ export default function Announcement() {
                 <p className="font-serif-tc text-base sm:text-lg font-bold text-slate-900">寶慈生命事業股份有限公司</p>
                 <p className="text-xs text-slate-500">（原永慈事業股份有限公司）</p>
                 <p className="text-xs font-serif-tc italic text-slate-400 pt-1">敬啟</p>
-                <div className="pt-3
+                <div className="pt-3 border-t border-slate-100">
+                  <p className="text-[10px] sm:text-[11px] text-slate-400">台南市政府民政局-核准變更名稱及負責人(受文者寶慈)</p>
+                </div>
+              </div>
+
+              {/* 手機版底部關閉按鈕 */}
+              <button
+                onClick={() => setIsOpen(false)}
+                className="w-full py-2.5 rounded-xl bg-gold-400 hover:bg-gold-500 text-ink-950 font-bold text-sm transition-colors shadow-md mt-2"
+              >
+                我已瞭解
+              </button>
+
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
