@@ -1,32 +1,34 @@
 import { Phone, ChevronDown, Heart } from 'lucide-react';
 
-// 改為引用 public 目錄下的絕對路徑
 const heroImage = '/hero-family.jpg';
 
 export default function Hero() {
   return (
     <section id="top" className="relative h-[90vh] min-h-[600px] max-h-[900px] overflow-hidden">
-      {/* Background image with slow zoom */}
+      {/* Background image with brightness boost */}
       <div className="absolute inset-0">
         <img
           src={heroImage}
           alt="家人彼此陪伴"
-          className="w-full h-full object-cover animate-slow-zoom"
+          className="w-full h-full object-cover animate-slow-zoom brightness-105 contrast-[1.02]"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-ink-950/50 via-ink-900/40 to-ink-900/70" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink-950/60 to-transparent" />
+        {/* 調薄漸層遮罩，保留左側文字可讀性，同時讓整張圖透出溫暖明亮的光彩 */}
+        <div className="absolute inset-0 bg-gradient-to-r from-ink-950/75 via-ink-950/30 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink-950/30 via-transparent to-ink-950/40" />
       </div>
 
       {/* Content */}
       <div className="relative h-full mx-auto max-w-8xl px-6 flex flex-col justify-center">
         <div className="max-w-3xl">
           <div className="flex items-center gap-3 mb-6 animate-fade-in" style={{ animationDelay: '0.2s', opacity: 0 }}>
-            <Heart className="w-5 h-5 text-gold-300" />
-            <span className="text-gold-300 text-sm tracking-[0.3em] uppercase">Apex BaoCi-Life</span>
+            <Heart className="w-5 h-5 text-gold-300 drop-shadow" />
+            <span className="text-gold-300 text-sm tracking-[0.3em] uppercase font-semibold drop-shadow">
+              Apex BaoCi-Life
+            </span>
           </div>
 
           <h1
-            className="font-serif-tc text-4xl md:text-5xl lg:text-6xl text-ivory-50 leading-[1.2] font-bold animate-fade-up"
+            className="font-serif-tc text-4xl md:text-5xl lg:text-6xl text-white leading-[1.2] font-bold animate-fade-up drop-shadow-lg"
             style={{ animationDelay: '0.4s', opacity: 0 }}
           >
             用愛心規劃
@@ -34,7 +36,7 @@ export default function Hero() {
           </h1>
 
           <p
-            className="mt-8 text-lg md:text-xl text-ivory-200/90 leading-relaxed max-w-2xl animate-fade-up"
+            className="mt-8 text-lg md:text-xl text-ivory-100 leading-relaxed max-w-2xl animate-fade-up drop-shadow"
             style={{ animationDelay: '0.7s', opacity: 0 }}
           >
             幫助您提早規劃，讓生命的每一刻
@@ -48,14 +50,14 @@ export default function Hero() {
           >
             <a
               href="#preneed"
-              className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-gold-400 text-ink-900 font-medium hover:bg-gold-300 transition-all hover:shadow-2xl hover:shadow-gold-500/20 group"
+              className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-gold-400 text-ink-900 font-bold hover:bg-gold-300 transition-all hover:shadow-2xl hover:shadow-gold-500/30 group"
             >
               <span>瞭解生前契約</span>
               <ChevronDown className="w-4 h-4 ml-2 group-hover:translate-y-0.5 transition-transform" />
             </a>
             <a
               href="#contact"
-              className="inline-flex items-center justify-center px-8 py-4 rounded-full border border-ivory-200/40 text-ivory-50 font-medium hover:bg-ivory-50/10 transition-all backdrop-blur-sm group"
+              className="inline-flex items-center justify-center px-8 py-4 rounded-full border border-white/50 bg-black/20 text-white font-medium hover:bg-white/20 transition-all backdrop-blur-md group"
             >
               <Phone className="w-4 h-4 mr-2 text-gold-300 group-hover:scale-110 transition-transform" />
               <span>聯絡我們</span>
@@ -66,8 +68,8 @@ export default function Hero() {
 
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-fade-in" style={{ animationDelay: '1.5s', opacity: 0 }}>
-        <span className="text-ivory-200/60 text-xs tracking-widest">SCROLL</span>
-        <div className="w-px h-12 bg-gradient-to-b from-ivory-200/60 to-transparent" />
+        <span className="text-white/80 text-xs tracking-widest drop-shadow">SCROLL</span>
+        <div className="w-px h-12 bg-gradient-to-b from-white/80 to-transparent" />
       </div>
 
       {/* Bottom fade into next section */}
